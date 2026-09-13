@@ -533,6 +533,67 @@
       transform:rotate(90deg);
     }
   }
+
+  .quicknav-section{
+    padding:48px 24px;
+    text-align:center;
+    border-bottom:1px solid var(--line);
+  }
+  .quicknav-section h1{
+    font-size:1.6rem;
+    margin-bottom:8px;
+  }
+  .quicknav-section p.subtitle{
+    color:#5a5a5a;
+    margin-bottom:30px;
+    font-size:0.95rem;
+  }
+  .quicknav-list{
+    list-style:none;
+    max-width:480px;
+    margin:0 auto;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .quicknav-item{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    background:var(--bg);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:14px 16px;
+    cursor:pointer;
+    user-select:none;
+    transition:box-shadow 0.15s ease, background 0.15s ease, opacity 0.15s ease;
+  }
+  .quicknav-item:hover{
+    background:var(--hover);
+  }
+  .quicknav-item .drag-handle{
+    font-size:1.1rem;
+    color:#b5b5b5;
+    cursor:grab;
+    line-height:1;
+  }
+  .quicknav-item .quicknav-label{
+    flex:1;
+    text-align:left;
+    font-size:0.98rem;
+    font-weight:bold;
+    color:var(--ink);
+  }
+  .quicknav-item .quicknav-arrow{
+    color:var(--accent);
+    font-size:1rem;
+  }
+  .quicknav-item.dragging{
+    opacity:0.4;
+  }
+  .quicknav-item.drag-over{
+    box-shadow:0 0 0 2px var(--accent) inset;
+  }
 </style>
 </head>
 <body>
@@ -557,7 +618,35 @@
   </ul>
 </nav>
 
-<section class="pricing">
+<section class="quicknav-section">
+  <h1>Jump to a Section</h1>
+  <p class="subtitle">Drag to reorder, click to open</p>
+
+  <ul class="quicknav-list" id="quicknavList">
+    <li class="quicknav-item" draggable="true" data-target="pricing">
+      <span class="drag-handle">&#9776;</span>
+      <span class="quicknav-label">Pricing Cards</span>
+      <span class="quicknav-arrow">&#8594;</span>
+    </li>
+    <li class="quicknav-item" draggable="true" data-target="testimonials">
+      <span class="drag-handle">&#9776;</span>
+      <span class="quicknav-label">Testimonials</span>
+      <span class="quicknav-arrow">&#8594;</span>
+    </li>
+    <li class="quicknav-item" draggable="true" data-target="clock">
+      <span class="drag-handle">&#9776;</span>
+      <span class="quicknav-label">Digital Clock</span>
+      <span class="quicknav-arrow">&#8594;</span>
+    </li>
+    <li class="quicknav-item" draggable="true" data-target="converter">
+      <span class="drag-handle">&#9776;</span>
+      <span class="quicknav-label">Currency Converter</span>
+      <span class="quicknav-arrow">&#8594;</span>
+    </li>
+  </ul>
+</section>
+
+<section class="pricing" id="pricing">
   <h1>Simple, Transparent Pricing</h1>
   <p class="subtitle">Choose the plan that fits your needs</p>
 
@@ -605,7 +694,7 @@
   </div>
 </section>
 
-<section class="testimonials">
+<section class="testimonials" id="testimonials">
   <h1>What Our Customers Say</h1>
   <p class="subtitle">Real feedback from people who use our product</p>
 
@@ -674,7 +763,7 @@
   <div class="dots" id="dots"></div>
 </section>
 
-<section class="clock-section">
+<section class="clock-section" id="clock">
   <h1>Current Time</h1>
   <p class="subtitle">Live digital clock updating every second</p>
   <div class="digital-clock">
@@ -707,7 +796,7 @@
   setInterval(updateClock, 1000);
 </script>
 
-<section class="converter-section">
+<section class="converter-section" id="converter">
   <h1>Currency Converter</h1>
   <p class="subtitle">Live exchange rates for quick conversions</p>
 
@@ -862,5 +951,62 @@
   }, 5000);
 </script>
 
+<script>
+  var quicknavList = document.getElementById("quicknavList");
+  var draggedItem = null;
+
+  var quicknavItems = quicknavList.querySelectorAll(".quicknav-item");
+  quicknavItems.forEach(function(item){
+    item.addEventListener("dragstart", function(e){
+      draggedItem = item;
+      e.dataTransfer.effectAllowed = "move";
+      e.dataTransfer.setData("text/plain", "");
+      setTimeout(function(){ item.classList.add("dragging"); }, 0);
+    });
+
+    item.addEventListener("dragend", function(){
+      item.classList.remove("dragging");
+      quicknavList.querySelectorAll(".quicknav-item").forEach(function(el){
+        el.classList.remove("drag-over");
+      });
+      draggedItem = null;
+    });
+
+    item.addEventListener("dragover", function(e){
+      e.preventDefault();
+      if (item === draggedItem) { return; }
+      item.classList.add("drag-over");
+    });
+
+    item.addEventListener("dragleave", function(){
+      item.classList.remove("drag-over");
+    });
+
+    item.addEventListener("drop", function(e){
+      e.preventDefault();
+      item.classList.remove("drag-over");
+      if (!draggedItem || item === draggedItem) { return; }
+
+      var items = Array.prototype.slice.call(quicknavList.querySelectorAll(".quicknav-item"));
+      var draggedIndex = items.indexOf(draggedItem);
+      var targetIndex = items.indexOf(item);
+
+      if (draggedIndex < targetIndex) {
+        item.after(draggedItem);
+      } else {
+        item.before(draggedItem);
+      }
+    });
+
+    item.addEventListener("click", function(){
+      if (item.classList.contains("dragging")) { return; }
+      var targetId = item.getAttribute("data-target");
+      var targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+  });
+</script>
 </body>
 </html>
