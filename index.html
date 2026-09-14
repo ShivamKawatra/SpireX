@@ -594,6 +594,140 @@
   .quicknav-item.drag-over{
     box-shadow:0 0 0 2px var(--accent) inset;
   }
+
+  .expense-section{
+    padding:60px 24px 80px;
+    text-align:center;
+    background:#fafafa;
+  }
+  .expense-section h1{
+    font-size:2rem;
+    margin-bottom:8px;
+  }
+  .expense-section p.subtitle{
+    color:#5a5a5a;
+    margin-bottom:40px;
+    font-size:1rem;
+  }
+  .expense-card{
+    max-width:560px;
+    margin:0 auto;
+    background:var(--bg);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:32px;
+    text-align:left;
+  }
+  .expense-form{
+    display:flex;
+    gap:10px;
+    margin-bottom:24px;
+    flex-wrap:wrap;
+  }
+  .expense-form input{
+    padding:12px 14px;
+    border:1px solid var(--line);
+    border-radius:6px;
+    font-size:0.95rem;
+    font-family:inherit;
+    color:var(--ink);
+  }
+  .expense-form .expense-desc-input{
+    flex:2;
+    min-width:160px;
+  }
+  .expense-form .expense-amount-input{
+    flex:1;
+    min-width:100px;
+  }
+  .expense-add-btn{
+    padding:12px 20px;
+    background:var(--accent);
+    color:#fff;
+    border:none;
+    border-radius:6px;
+    font-weight:bold;
+    font-size:0.95rem;
+    cursor:pointer;
+    transition:opacity 0.2s ease;
+  }
+  .expense-add-btn:hover{
+    opacity:0.88;
+  }
+  .expense-summary{
+    display:flex;
+    justify-content:space-between;
+    padding:16px 18px;
+    background:var(--hover);
+    border-radius:8px;
+    margin-bottom:20px;
+  }
+  .expense-summary .label{
+    font-size:0.85rem;
+    color:#5a5a5a;
+  }
+  .expense-summary .value{
+    font-size:1.3rem;
+    font-weight:bold;
+    color:var(--accent);
+  }
+  .expense-list{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    max-height:300px;
+    overflow-y:auto;
+  }
+  .expense-item{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:12px 14px;
+    border:1px solid var(--line);
+    border-radius:6px;
+  }
+  .expense-item .expense-item-desc{
+    font-size:0.95rem;
+    color:var(--ink);
+  }
+  .expense-item .expense-item-right{
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .expense-item .expense-item-amount{
+    font-weight:bold;
+    color:var(--ink);
+    font-size:0.95rem;
+  }
+  .expense-item .expense-delete{
+    background:none;
+    border:none;
+    color:#c0392b;
+    font-size:1.1rem;
+    cursor:pointer;
+    line-height:1;
+    padding:2px 4px;
+  }
+  .expense-item .expense-delete:hover{
+    opacity:0.7;
+  }
+  .expense-empty{
+    text-align:center;
+    color:#9a9a9a;
+    font-size:0.9rem;
+    padding:20px 0;
+  }
+
+  @media (max-width:520px){
+    .expense-card{
+      padding:24px 18px;
+    }
+    .expense-form{
+      flex-direction:column;
+    }
+  }
 </style>
 </head>
 <body>
@@ -641,6 +775,11 @@
     <li class="quicknav-item" draggable="true" data-target="converter">
       <span class="drag-handle">&#9776;</span>
       <span class="quicknav-label">Currency Converter</span>
+      <span class="quicknav-arrow">&#8594;</span>
+    </li>
+    <li class="quicknav-item" draggable="true" data-target="expense-tracker">
+      <span class="drag-handle">&#9776;</span>
+      <span class="quicknav-label">Expense Tracker</span>
       <span class="quicknav-arrow">&#8594;</span>
     </li>
   </ul>
@@ -909,6 +1048,116 @@
   });
 </script>
 
+<section class="expense-section" id="expense-tracker">
+  <h1>Expense Tracker</h1>
+  <p class="subtitle">Log your spending and keep a running total</p>
+
+  <div class="expense-card">
+    <form class="expense-form" id="expenseForm">
+      <input type="text" class="expense-desc-input" id="expenseDesc" placeholder="Description" required>
+      <input type="number" class="expense-amount-input" id="expenseAmount" placeholder="Amount" min="0" step="any" required>
+      <button type="submit" class="expense-add-btn">Add</button>
+    </form>
+
+    <div class="expense-summary">
+      <span class="label">Total Spent</span>
+      <span class="value" id="expenseTotal">&#8377;0.00</span>
+    </div>
+
+    <ul class="expense-list" id="expenseList"></ul>
+    <div class="expense-empty" id="expenseEmpty">No expenses added yet.</div>
+  </div>
+</section>
+
+<script>
+  var expenseForm = document.getElementById("expenseForm");
+  var expenseDescInput = document.getElementById("expenseDesc");
+  var expenseAmountInput = document.getElementById("expenseAmount");
+  var expenseListEl = document.getElementById("expenseList");
+  var expenseTotalEl = document.getElementById("expenseTotal");
+  var expenseEmptyEl = document.getElementById("expenseEmpty");
+  var expenses = [];
+
+  function loadExpenses(){
+    try{
+      var stored = localStorage.getItem("expenseTrackerData");
+      if (stored) { expenses = JSON.parse(stored); }
+    } catch(e){
+      expenses = [];
+    }
+  }
+
+  function saveExpenses(){
+    try{
+      localStorage.setItem("expenseTrackerData", JSON.stringify(expenses));
+    } catch(e){}
+  }
+
+  function renderExpenses(){
+    expenseListEl.innerHTML = "";
+
+    if (expenses.length === 0) {
+      expenseEmptyEl.style.display = "block";
+    } else {
+      expenseEmptyEl.style.display = "none";
+    }
+
+    var total = 0;
+    expenses.forEach(function(exp, index){
+      total += exp.amount;
+
+      var li = document.createElement("li");
+      li.className = "expense-item";
+
+      var descSpan = document.createElement("span");
+      descSpan.className = "expense-item-desc";
+      descSpan.textContent = exp.desc;
+
+      var rightDiv = document.createElement("div");
+      rightDiv.className = "expense-item-right";
+
+      var amountSpan = document.createElement("span");
+      amountSpan.className = "expense-item-amount";
+      amountSpan.textContent = "\u20b9" + exp.amount.toFixed(2);
+
+      var deleteBtn = document.createElement("button");
+      deleteBtn.className = "expense-delete";
+      deleteBtn.innerHTML = "&#10005;";
+      deleteBtn.setAttribute("data-index", index);
+      deleteBtn.addEventListener("click", function(){
+        expenses.splice(index, 1);
+        saveExpenses();
+        renderExpenses();
+      });
+
+      rightDiv.appendChild(amountSpan);
+      rightDiv.appendChild(deleteBtn);
+      li.appendChild(descSpan);
+      li.appendChild(rightDiv);
+      expenseListEl.appendChild(li);
+    });
+
+    expenseTotalEl.textContent = "\u20b9" + total.toFixed(2);
+  }
+
+  expenseForm.addEventListener("submit", function(e){
+    e.preventDefault();
+    var desc = expenseDescInput.value.trim();
+    var amount = parseFloat(expenseAmountInput.value);
+
+    if (!desc || isNaN(amount) || amount < 0) { return; }
+
+    expenses.push({ desc: desc, amount: amount });
+    saveExpenses();
+    renderExpenses();
+
+    expenseForm.reset();
+    expenseDescInput.focus();
+  });
+
+  loadExpenses();
+  renderExpenses();
+</script>
 
 <script>
   var slidesEl = document.getElementById("testimonialSlides");
