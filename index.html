@@ -1338,27 +1338,27 @@
     countryStatus.textContent = "Searching...";
     countryCard.style.display = "none";
 
-    fetch("https://restcountries.com/v3.1/name/" + encodeURIComponent(name))
+    fetch("https://countries.dev/name/" + encodeURIComponent(name))
       .then(function(res){
-        if (!res.ok) { throw new Error("Country not found"); }
+        if (res.status === 404) { throw { notFound: true }; }
+        if (!res.ok) { throw new Error("API status " + res.status); }
         return res.json();
       })
       .then(function(data){
         var country = data[0];
 
         document.getElementById("countryFlag").src = country.flags.png;
-        document.getElementById("countryFlag").alt = country.name.common + " flag";
-        document.getElementById("countryName").textContent = country.name.common;
-        document.getElementById("countryOfficial").textContent = country.name.official;
-        document.getElementById("countryCapital").textContent = country.capital ? country.capital[0] : "N/A";
+        document.getElementById("countryFlag").alt = country.name + " flag";
+        document.getElementById("countryName").textContent = country.name;
+        document.getElementById("countryOfficial").textContent = country.demonym ? "Demonym: " + country.demonym : "";
+        document.getElementById("countryCapital").textContent = country.capital || "N/A";
         document.getElementById("countryPopulation").textContent = country.population.toLocaleString();
         document.getElementById("countryRegion").textContent = country.region + (country.subregion ? " \u00b7 " + country.subregion : "");
 
         var currencyText = "N/A";
-        if (country.currencies) {
-          var codes = Object.keys(country.currencies);
-          currencyText = codes.map(function(code){
-            return country.currencies[code].name + " (" + (country.currencies[code].symbol || code) + ")";
+        if (country.currencies && country.currencies.length) {
+          currencyText = country.currencies.map(function(c){
+            return c.name + " (" + (c.symbol || c.code) + ")";
           }).join(", ");
         }
         document.getElementById("countryCurrency").textContent = currencyText;
@@ -1366,8 +1366,13 @@
         countryCard.style.display = "block";
         countryStatus.textContent = "";
       })
-      .catch(function(){
-        countryStatus.textContent = "Country not found. Check the spelling and try again.";
+      .catch(function(err){
+        if (err && err.notFound) {
+          countryStatus.textContent = "No country found matching \"" + name + "\". Check the spelling and try again.";
+        } else {
+          var reason = (err && err.message) ? err.message : "network error";
+          countryStatus.textContent = "Could not reach the country API (" + reason + "). If you opened this file directly, try serving it over http/https instead.";
+        }
         countryCard.style.display = "none";
       });
   }
