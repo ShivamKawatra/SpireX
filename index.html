@@ -728,6 +728,124 @@
       flex-direction:column;
     }
   }
+
+  .country-section{
+    padding:60px 24px 80px;
+    text-align:center;
+  }
+  .country-section h1{
+    font-size:2rem;
+    margin-bottom:8px;
+  }
+  .country-section p.subtitle{
+    color:#5a5a5a;
+    margin-bottom:40px;
+    font-size:1rem;
+  }
+  .country-search-row{
+    display:flex;
+    gap:10px;
+    max-width:480px;
+    margin:0 auto 30px;
+  }
+  .country-search-row input{
+    flex:1;
+    padding:13px 16px;
+    border:1px solid var(--line);
+    border-radius:6px;
+    font-size:0.98rem;
+    font-family:inherit;
+    color:var(--ink);
+  }
+  .country-search-btn{
+    padding:13px 24px;
+    background:var(--accent);
+    color:#fff;
+    border:none;
+    border-radius:6px;
+    font-weight:bold;
+    font-size:0.95rem;
+    cursor:pointer;
+    transition:opacity 0.2s ease;
+  }
+  .country-search-btn:hover{
+    opacity:0.88;
+  }
+  .country-status{
+    max-width:480px;
+    margin:0 auto 10px;
+    font-size:0.88rem;
+    color:#5a5a5a;
+  }
+  .country-card{
+    max-width:560px;
+    margin:0 auto;
+    background:var(--bg);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:32px;
+    text-align:left;
+    display:none;
+  }
+  .country-card-header{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    margin-bottom:24px;
+  }
+  .country-flag{
+    width:96px;
+    height:64px;
+    object-fit:cover;
+    border-radius:6px;
+    border:1px solid var(--line);
+  }
+  .country-name{
+    font-size:1.4rem;
+    font-weight:bold;
+    color:var(--ink);
+  }
+  .country-official{
+    font-size:0.85rem;
+    color:#5a5a5a;
+    margin-top:2px;
+  }
+  .country-details{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+  }
+  .country-detail-item{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:14px 16px;
+  }
+  .country-detail-item .detail-label{
+    font-size:0.78rem;
+    color:#5a5a5a;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    margin-bottom:4px;
+  }
+  .country-detail-item .detail-value{
+    font-size:1rem;
+    font-weight:bold;
+    color:var(--ink);
+  }
+
+  @media (max-width:520px){
+    .country-search-row{
+      flex-direction:column;
+    }
+    .country-details{
+      grid-template-columns:1fr;
+    }
+    .country-card-header{
+      flex-direction:column;
+      text-align:center;
+    }
+  }
 </style>
 </head>
 <body>
@@ -780,6 +898,11 @@
     <li class="quicknav-item" draggable="true" data-target="expense-tracker">
       <span class="drag-handle">&#9776;</span>
       <span class="quicknav-label">Expense Tracker</span>
+      <span class="quicknav-arrow">&#8594;</span>
+    </li>
+    <li class="quicknav-item" draggable="true" data-target="country-info">
+      <span class="drag-handle">&#9776;</span>
+      <span class="quicknav-label">Country Information</span>
       <span class="quicknav-arrow">&#8594;</span>
     </li>
   </ul>
@@ -1157,6 +1280,102 @@
 
   loadExpenses();
   renderExpenses();
+</script>
+
+<section class="country-section" id="country-info">
+  <h1>Country Information</h1>
+  <p class="subtitle">Search any country to see its key details</p>
+
+  <div class="country-search-row">
+    <input type="text" id="countryInput" placeholder="Enter a country name, e.g. Japan">
+    <button class="country-search-btn" id="countrySearchBtn">Search</button>
+  </div>
+
+  <div class="country-status" id="countryStatus"></div>
+
+  <div class="country-card" id="countryCard">
+    <div class="country-card-header">
+      <img class="country-flag" id="countryFlag" src="" alt="">
+      <div>
+        <div class="country-name" id="countryName"></div>
+        <div class="country-official" id="countryOfficial"></div>
+      </div>
+    </div>
+    <div class="country-details">
+      <div class="country-detail-item">
+        <div class="detail-label">Capital</div>
+        <div class="detail-value" id="countryCapital"></div>
+      </div>
+      <div class="country-detail-item">
+        <div class="detail-label">Population</div>
+        <div class="detail-value" id="countryPopulation"></div>
+      </div>
+      <div class="country-detail-item">
+        <div class="detail-label">Region</div>
+        <div class="detail-value" id="countryRegion"></div>
+      </div>
+      <div class="country-detail-item">
+        <div class="detail-label">Currency</div>
+        <div class="detail-value" id="countryCurrency"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  var countryInput = document.getElementById("countryInput");
+  var countryStatus = document.getElementById("countryStatus");
+  var countryCard = document.getElementById("countryCard");
+
+  function searchCountry(){
+    var name = countryInput.value.trim();
+    if (!name) {
+      countryStatus.textContent = "Please enter a country name.";
+      countryCard.style.display = "none";
+      return;
+    }
+
+    countryStatus.textContent = "Searching...";
+    countryCard.style.display = "none";
+
+    fetch("https://restcountries.com/v3.1/name/" + encodeURIComponent(name))
+      .then(function(res){
+        if (!res.ok) { throw new Error("Country not found"); }
+        return res.json();
+      })
+      .then(function(data){
+        var country = data[0];
+
+        document.getElementById("countryFlag").src = country.flags.png;
+        document.getElementById("countryFlag").alt = country.name.common + " flag";
+        document.getElementById("countryName").textContent = country.name.common;
+        document.getElementById("countryOfficial").textContent = country.name.official;
+        document.getElementById("countryCapital").textContent = country.capital ? country.capital[0] : "N/A";
+        document.getElementById("countryPopulation").textContent = country.population.toLocaleString();
+        document.getElementById("countryRegion").textContent = country.region + (country.subregion ? " \u00b7 " + country.subregion : "");
+
+        var currencyText = "N/A";
+        if (country.currencies) {
+          var codes = Object.keys(country.currencies);
+          currencyText = codes.map(function(code){
+            return country.currencies[code].name + " (" + (country.currencies[code].symbol || code) + ")";
+          }).join(", ");
+        }
+        document.getElementById("countryCurrency").textContent = currencyText;
+
+        countryCard.style.display = "block";
+        countryStatus.textContent = "";
+      })
+      .catch(function(){
+        countryStatus.textContent = "Country not found. Check the spelling and try again.";
+        countryCard.style.display = "none";
+      });
+  }
+
+  document.getElementById("countrySearchBtn").addEventListener("click", searchCountry);
+  countryInput.addEventListener("keydown", function(e){
+    if (e.key === "Enter") { searchCountry(); }
+  });
 </script>
 
 <script>
