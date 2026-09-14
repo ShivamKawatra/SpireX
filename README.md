@@ -1,6 +1,8 @@
 # Spire X
 
 #Navbar
+#Portfolio
+#Resume Card
 #Drag drop 
 #Pricing Cards 
 #Testimonials
