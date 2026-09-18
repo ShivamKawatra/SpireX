@@ -968,6 +968,192 @@
       grid-template-columns:1fr;
     }
   }
+
+  .cart-section{
+    padding:60px 24px 80px;
+    text-align:center;
+  }
+  .cart-section h1{
+    font-size:2rem;
+    margin-bottom:8px;
+  }
+  .cart-section p.subtitle{
+    color:#5a5a5a;
+    margin-bottom:40px;
+    font-size:1rem;
+  }
+  .cart-products{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:18px;
+    max-width:900px;
+    margin:0 auto 46px;
+  }
+  .cart-product-card{
+    background:var(--bg);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:22px 18px;
+    text-align:center;
+  }
+  .cart-product-icon{
+    font-size:2.2rem;
+    margin-bottom:10px;
+  }
+  .cart-product-name{
+    font-size:0.95rem;
+    font-weight:bold;
+    color:var(--ink);
+    margin-bottom:4px;
+  }
+  .cart-product-price{
+    font-size:0.9rem;
+    color:#5a5a5a;
+    margin-bottom:14px;
+  }
+  .cart-add-btn{
+    width:100%;
+    padding:10px 0;
+    background:var(--accent);
+    color:#fff;
+    border:none;
+    border-radius:6px;
+    font-weight:bold;
+    font-size:0.88rem;
+    cursor:pointer;
+    transition:opacity 0.2s ease;
+  }
+  .cart-add-btn:hover{
+    opacity:0.88;
+  }
+  .cart-add-btn.added{
+    background:#2f7d4f;
+  }
+  .cart-summary-card{
+    max-width:560px;
+    margin:0 auto;
+    background:var(--bg);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:32px;
+    text-align:left;
+  }
+  .cart-summary-card h2{
+    font-size:1.2rem;
+    margin-bottom:18px;
+  }
+  .cart-list{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-bottom:20px;
+  }
+  .cart-item{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:12px 14px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    background:#fff;
+  }
+  .cart-item-info{
+    flex:1;
+    min-width:0;
+  }
+  .cart-item-name{
+    font-size:0.95rem;
+    font-weight:bold;
+    color:var(--ink);
+  }
+  .cart-item-price{
+    font-size:0.8rem;
+    color:#5a5a5a;
+  }
+  .cart-qty-controls{
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .cart-qty-btn{
+    width:26px;
+    height:26px;
+    border-radius:50%;
+    border:1px solid var(--line);
+    background:#fff;
+    color:var(--accent);
+    font-weight:bold;
+    cursor:pointer;
+    font-size:0.95rem;
+    line-height:1;
+  }
+  .cart-qty-btn:hover{
+    background:var(--hover);
+  }
+  .cart-qty-value{
+    min-width:18px;
+    text-align:center;
+    font-size:0.9rem;
+    font-weight:bold;
+  }
+  .cart-item-total{
+    min-width:70px;
+    text-align:right;
+    font-weight:bold;
+    font-size:0.92rem;
+    color:var(--ink);
+  }
+  .cart-remove-btn{
+    background:none;
+    border:none;
+    color:#c0392b;
+    font-size:1.05rem;
+    cursor:pointer;
+    line-height:1;
+    padding:2px 4px;
+  }
+  .cart-remove-btn:hover{
+    opacity:0.7;
+  }
+  .cart-empty{
+    text-align:center;
+    color:#9a9a9a;
+    font-size:0.9rem;
+    padding:16px 0;
+  }
+  .cart-total-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 18px;
+    background:var(--hover);
+    border-radius:8px;
+  }
+  .cart-total-row .label{
+    font-size:0.9rem;
+    color:#5a5a5a;
+  }
+  .cart-total-row .value{
+    font-size:1.3rem;
+    font-weight:bold;
+    color:var(--accent);
+  }
+
+  @media (max-width:768px){
+    .cart-products{
+      grid-template-columns:repeat(2, 1fr);
+    }
+  }
+  @media (max-width:520px){
+    .cart-products{
+      grid-template-columns:1fr;
+    }
+    .cart-item{
+      flex-wrap:wrap;
+    }
+  }
 </style>
 </head>
 <body>
@@ -1027,6 +1213,11 @@
     <li class="quicknav-item" draggable="true" data-target="weather-info">
       <span class="drag-handle">&#9776;</span>
       <span class="quicknav-label">Weather Information</span>
+      <span class="quicknav-arrow">&#8594;</span>
+    </li>
+    <li class="quicknav-item" draggable="true" data-target="shopping-cart">
+      <span class="drag-handle">&#9776;</span>
+      <span class="quicknav-label">Shopping Cart</span>
       <span class="quicknav-arrow">&#8594;</span>
     </li>
   </ul>
@@ -1658,6 +1849,197 @@
   weatherInput.addEventListener("keydown", function(e){
     if (e.key === "Enter") { searchWeather(); }
   });
+</script>
+
+<section class="cart-section" id="shopping-cart">
+  <h1>Shopping Cart</h1>
+  <p class="subtitle">Add products, adjust quantities, and see your total update live</p>
+
+  <div class="cart-products" id="cartProducts"></div>
+
+  <div class="cart-summary-card">
+    <h2>Your Cart</h2>
+    <ul class="cart-list" id="cartList"></ul>
+    <div class="cart-empty" id="cartEmpty">Your cart is empty.</div>
+    <div class="cart-total-row">
+      <span class="label">Total</span>
+      <span class="value" id="cartTotal">&#8377;0.00</span>
+    </div>
+  </div>
+</section>
+
+<script>
+  var products = [
+    { id: "mouse", name: "Wireless Mouse", price: 799, icon: "\ud83d\uddb1\ufe0f" },
+    { id: "keyboard", name: "Mechanical Keyboard", price: 2999, icon: "\u2328\ufe0f" },
+    { id: "hub", name: "USB-C Hub", price: 1499, icon: "\ud83d\udd0c" },
+    { id: "stand", name: "Laptop Stand", price: 1199, icon: "\ud83d\udcbb" },
+    { id: "webcam", name: "HD Webcam", price: 2199, icon: "\ud83d\udcf7" },
+    { id: "headphones", name: "Noise Cancelling Headphones", price: 4999, icon: "\ud83c\udfa7" }
+  ];
+
+  var cart = {};
+  var cartProductsEl = document.getElementById("cartProducts");
+  var cartListEl = document.getElementById("cartList");
+  var cartEmptyEl = document.getElementById("cartEmpty");
+  var cartTotalEl = document.getElementById("cartTotal");
+
+  function loadCart(){
+    try{
+      var stored = localStorage.getItem("shoppingCartData");
+      if (stored) { cart = JSON.parse(stored); }
+    } catch(e){
+      cart = {};
+    }
+  }
+
+  function saveCart(){
+    try{
+      localStorage.setItem("shoppingCartData", JSON.stringify(cart));
+    } catch(e){}
+  }
+
+  function findProduct(id){
+    for (var i = 0; i < products.length; i++) {
+      if (products[i].id === id) { return products[i]; }
+    }
+    return null;
+  }
+
+  function renderProducts(){
+    cartProductsEl.innerHTML = "";
+    products.forEach(function(p){
+      var card = document.createElement("div");
+      card.className = "cart-product-card";
+
+      var icon = document.createElement("div");
+      icon.className = "cart-product-icon";
+      icon.textContent = p.icon;
+
+      var name = document.createElement("div");
+      name.className = "cart-product-name";
+      name.textContent = p.name;
+
+      var price = document.createElement("div");
+      price.className = "cart-product-price";
+      price.textContent = "\u20b9" + p.price.toFixed(2);
+
+      var btn = document.createElement("button");
+      btn.className = "cart-add-btn";
+      btn.textContent = "Add to Cart";
+      btn.addEventListener("click", function(){
+        cart[p.id] = (cart[p.id] || 0) + 1;
+        saveCart();
+        renderCart();
+
+        btn.textContent = "Added";
+        btn.classList.add("added");
+        setTimeout(function(){
+          btn.textContent = "Add to Cart";
+          btn.classList.remove("added");
+        }, 700);
+      });
+
+      card.appendChild(icon);
+      card.appendChild(name);
+      card.appendChild(price);
+      card.appendChild(btn);
+      cartProductsEl.appendChild(card);
+    });
+  }
+
+  function changeQty(id, delta){
+    if (!cart[id]) { return; }
+    cart[id] += delta;
+    if (cart[id] <= 0) { delete cart[id]; }
+    saveCart();
+    renderCart();
+  }
+
+  function removeFromCart(id){
+    delete cart[id];
+    saveCart();
+    renderCart();
+  }
+
+  function renderCart(){
+    cartListEl.innerHTML = "";
+    var ids = Object.keys(cart);
+
+    if (ids.length === 0) {
+      cartEmptyEl.style.display = "block";
+    } else {
+      cartEmptyEl.style.display = "none";
+    }
+
+    var total = 0;
+    ids.forEach(function(id){
+      var product = findProduct(id);
+      if (!product) { return; }
+      var qty = cart[id];
+      var lineTotal = product.price * qty;
+      total += lineTotal;
+
+      var li = document.createElement("li");
+      li.className = "cart-item";
+
+      var infoDiv = document.createElement("div");
+      infoDiv.className = "cart-item-info";
+
+      var nameDiv = document.createElement("div");
+      nameDiv.className = "cart-item-name";
+      nameDiv.textContent = product.name;
+
+      var priceDiv = document.createElement("div");
+      priceDiv.className = "cart-item-price";
+      priceDiv.textContent = "\u20b9" + product.price.toFixed(2) + " each";
+
+      infoDiv.appendChild(nameDiv);
+      infoDiv.appendChild(priceDiv);
+
+      var qtyDiv = document.createElement("div");
+      qtyDiv.className = "cart-qty-controls";
+
+      var minusBtn = document.createElement("button");
+      minusBtn.className = "cart-qty-btn";
+      minusBtn.textContent = "\u2212";
+      minusBtn.addEventListener("click", function(){ changeQty(id, -1); });
+
+      var qtyValue = document.createElement("span");
+      qtyValue.className = "cart-qty-value";
+      qtyValue.textContent = qty;
+
+      var plusBtn = document.createElement("button");
+      plusBtn.className = "cart-qty-btn";
+      plusBtn.textContent = "+";
+      plusBtn.addEventListener("click", function(){ changeQty(id, 1); });
+
+      qtyDiv.appendChild(minusBtn);
+      qtyDiv.appendChild(qtyValue);
+      qtyDiv.appendChild(plusBtn);
+
+      var totalDiv = document.createElement("div");
+      totalDiv.className = "cart-item-total";
+      totalDiv.textContent = "\u20b9" + lineTotal.toFixed(2);
+
+      var removeBtn = document.createElement("button");
+      removeBtn.className = "cart-remove-btn";
+      removeBtn.innerHTML = "&#10005;";
+      removeBtn.addEventListener("click", function(){ removeFromCart(id); });
+
+      li.appendChild(infoDiv);
+      li.appendChild(qtyDiv);
+      li.appendChild(totalDiv);
+      li.appendChild(removeBtn);
+      cartListEl.appendChild(li);
+    });
+
+    cartTotalEl.textContent = "\u20b9" + total.toFixed(2);
+  }
+
+  loadCart();
+  renderProducts();
+  renderCart();
 </script>
 
 <script>
