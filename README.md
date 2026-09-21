@@ -12,4 +12,4 @@
 #Country Information 
 #Weather Information
 #Shopping Cart
-#E Commerce Page
+#E Commerce Store
