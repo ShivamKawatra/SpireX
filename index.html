@@ -1572,6 +1572,409 @@
       align-items:stretch;
     }
   }
+
+  .tab-nav{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    justify-content:center;
+    max-width:900px;
+    margin:0 auto 34px;
+  }
+  .tab-btn{
+    padding:10px 20px;
+    border:1px solid var(--line);
+    background:#fff;
+    color:var(--ink);
+    border-radius:20px;
+    font-size:0.88rem;
+    font-weight:bold;
+    cursor:pointer;
+    transition:background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  .tab-btn:hover{
+    background:var(--hover);
+  }
+  .tab-btn.active{
+    background:var(--accent);
+    border-color:var(--accent);
+    color:#fff;
+  }
+  .tab-panel{
+    display:none;
+  }
+  .tab-panel.active{
+    display:block;
+  }
+
+  .hosp-section{
+    padding:60px 24px 80px;
+  }
+  .hosp-section h1{
+    font-size:2rem;
+    text-align:center;
+    margin-bottom:8px;
+  }
+  .hosp-section p.subtitle{
+    color:#5a5a5a;
+    text-align:center;
+    margin-bottom:34px;
+    font-size:1rem;
+  }
+  .hosp-grid{
+    max-width:1000px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:16px;
+  }
+  .hosp-card{
+    background:var(--bg);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:22px 18px;
+    text-align:center;
+  }
+  .hosp-card-icon{
+    font-size:2.2rem;
+    margin-bottom:10px;
+  }
+  .hosp-doctor-name{
+    font-size:1rem;
+    font-weight:bold;
+    color:var(--ink);
+    margin-bottom:2px;
+  }
+  .hosp-doctor-specialty{
+    font-size:0.85rem;
+    color:var(--accent);
+    margin-bottom:4px;
+  }
+  .hosp-doctor-exp{
+    font-size:0.78rem;
+    color:#5a5a5a;
+    margin-bottom:14px;
+  }
+  .hosp-book-btn{
+    width:100%;
+    padding:9px 0;
+    background:var(--accent);
+    color:#fff;
+    border:none;
+    border-radius:6px;
+    font-weight:bold;
+    font-size:0.85rem;
+    cursor:pointer;
+  }
+  .hosp-book-btn:hover{
+    opacity:0.88;
+  }
+  .hosp-service-name{
+    font-size:0.95rem;
+    font-weight:bold;
+    color:var(--ink);
+    margin-bottom:6px;
+  }
+  .hosp-service-desc{
+    font-size:0.82rem;
+    color:#5a5a5a;
+    line-height:1.4;
+  }
+  .hosp-form-card{
+    max-width:600px;
+    margin:0 auto;
+    background:var(--bg);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:32px;
+    text-align:left;
+  }
+  .hosp-form-row{
+    margin-bottom:16px;
+  }
+  .hosp-form-row label{
+    display:block;
+    font-size:0.82rem;
+    font-weight:bold;
+    color:#5a5a5a;
+    margin-bottom:6px;
+  }
+  .hosp-form-row input,
+  .hosp-form-row select,
+  .hosp-form-row textarea{
+    width:100%;
+    padding:11px 14px;
+    border:1px solid var(--line);
+    border-radius:6px;
+    font-size:0.92rem;
+    font-family:inherit;
+    color:var(--ink);
+  }
+  .hosp-form-row textarea{
+    resize:vertical;
+    min-height:70px;
+  }
+  .hosp-form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+  }
+  .hosp-submit-btn{
+    width:100%;
+    padding:13px 0;
+    background:var(--accent);
+    color:#fff;
+    border:none;
+    border-radius:6px;
+    font-weight:bold;
+    font-size:0.95rem;
+    cursor:pointer;
+    margin-top:6px;
+  }
+  .hosp-submit-btn:hover{
+    opacity:0.88;
+  }
+  .hosp-appointments{
+    max-width:600px;
+    margin:30px auto 0;
+  }
+  .hosp-appointments h3{
+    font-size:1rem;
+    margin-bottom:14px;
+  }
+  .hosp-appt-item{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:14px 16px;
+    margin-bottom:10px;
+  }
+  .hosp-appt-info{
+    font-size:0.85rem;
+    color:var(--ink);
+  }
+  .hosp-appt-info strong{
+    display:block;
+    font-size:0.92rem;
+    margin-bottom:2px;
+  }
+  .hosp-appt-cancel{
+    background:none;
+    border:none;
+    color:#c0392b;
+    font-size:0.95rem;
+    cursor:pointer;
+  }
+  .hosp-appt-empty{
+    text-align:center;
+    color:#9a9a9a;
+    font-size:0.88rem;
+    padding:16px 0;
+  }
+
+  .college-section{
+    padding:60px 24px 80px;
+    background:#fafafa;
+  }
+  .college-section h1{
+    font-size:2rem;
+    text-align:center;
+    margin-bottom:8px;
+  }
+  .college-section p.subtitle{
+    color:#5a5a5a;
+    text-align:center;
+    margin-bottom:34px;
+    font-size:1rem;
+  }
+  .college-grid{
+    max-width:1000px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:16px;
+  }
+  .college-card{
+    background:var(--bg);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:22px 18px;
+    text-align:center;
+  }
+  .college-card-icon{
+    font-size:2.2rem;
+    margin-bottom:10px;
+  }
+  .college-card-name{
+    font-size:0.98rem;
+    font-weight:bold;
+    color:var(--ink);
+    margin-bottom:4px;
+  }
+  .college-card-meta{
+    font-size:0.8rem;
+    color:var(--accent);
+    margin-bottom:6px;
+  }
+  .college-card-desc{
+    font-size:0.8rem;
+    color:#5a5a5a;
+    line-height:1.4;
+  }
+  .college-table-wrap{
+    max-width:900px;
+    margin:0 auto;
+    overflow-x:auto;
+  }
+  .college-table{
+    width:100%;
+    border-collapse:collapse;
+    background:var(--bg);
+    border:1px solid var(--line);
+    border-radius:10px;
+    overflow:hidden;
+  }
+  .college-table th{
+    text-align:left;
+    font-size:0.78rem;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    color:#5a5a5a;
+    padding:14px 16px;
+    border-bottom:1px solid var(--line);
+  }
+  .college-table td{
+    padding:14px 16px;
+    font-size:0.88rem;
+    color:var(--ink);
+    border-bottom:1px solid var(--line);
+  }
+  .college-table tr:last-child td{
+    border-bottom:none;
+  }
+  .college-faculty-avatar{
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    background:var(--accent);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    font-size:0.9rem;
+    margin:0 auto 10px;
+  }
+  .college-stats-row{
+    max-width:900px;
+    margin:0 auto 26px;
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:14px;
+  }
+  .college-stat-box{
+    background:var(--bg);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:16px;
+    text-align:center;
+  }
+  .college-stat-value{
+    font-size:1.4rem;
+    font-weight:bold;
+    color:var(--accent);
+  }
+  .college-stat-label{
+    font-size:0.76rem;
+    color:#5a5a5a;
+    margin-top:2px;
+  }
+  .college-student-search{
+    max-width:900px;
+    margin:0 auto 18px;
+    padding:11px 16px;
+    border:1px solid var(--line);
+    border-radius:6px;
+    font-size:0.92rem;
+    font-family:inherit;
+    color:var(--ink);
+    display:block;
+    width:100%;
+    box-sizing:border-box;
+  }
+  .college-event-card{
+    max-width:700px;
+    margin:0 auto 12px;
+    display:flex;
+    gap:16px;
+    background:var(--bg);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:18px 20px;
+    text-align:left;
+  }
+  .college-event-date{
+    flex-shrink:0;
+    width:70px;
+    text-align:center;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:8px 4px;
+  }
+  .college-event-date .day{
+    font-size:1.3rem;
+    font-weight:bold;
+    color:var(--accent);
+    line-height:1;
+  }
+  .college-event-date .month{
+    font-size:0.7rem;
+    text-transform:uppercase;
+    color:#5a5a5a;
+  }
+  .college-event-name{
+    font-size:0.95rem;
+    font-weight:bold;
+    color:var(--ink);
+    margin-bottom:4px;
+  }
+  .college-event-desc{
+    font-size:0.82rem;
+    color:#5a5a5a;
+    line-height:1.4;
+  }
+
+  @media (max-width:768px){
+    .hosp-grid, .college-grid{
+      grid-template-columns:repeat(2, 1fr);
+    }
+    .hosp-form-grid{
+      grid-template-columns:1fr;
+    }
+    .college-stats-row{
+      grid-template-columns:repeat(2, 1fr);
+    }
+  }
+  @media (max-width:520px){
+    .hosp-grid, .college-grid{
+      grid-template-columns:1fr;
+    }
+    .hosp-appt-item{
+      flex-wrap:wrap;
+    }
+    .college-event-card{
+      flex-direction:column;
+    }
+    .college-event-date{
+      width:auto;
+      display:inline-block;
+    }
+  }
 </style>
 </head>
 <body>
@@ -1641,6 +2044,16 @@
     <li class="quicknav-item" draggable="true" data-target="ecommerce-store">
       <span class="drag-handle">&#9776;</span>
       <span class="quicknav-label">E-Commerce Store</span>
+      <span class="quicknav-arrow">&#8594;</span>
+    </li>
+    <li class="quicknav-item" draggable="true" data-target="hospital-appointment">
+      <span class="drag-handle">&#9776;</span>
+      <span class="quicknav-label">Hospital Appointment</span>
+      <span class="quicknav-arrow">&#8594;</span>
+    </li>
+    <li class="quicknav-item" draggable="true" data-target="college-management">
+      <span class="drag-handle">&#9776;</span>
+      <span class="quicknav-label">College Management</span>
       <span class="quicknav-arrow">&#8594;</span>
     </li>
   </ul>
@@ -2831,6 +3244,552 @@
   ecomRenderFilters();
   ecomRenderGrid();
   ecomRenderCart();
+</script>
+
+<section class="hosp-section" id="hospital-appointment">
+  <h1>Hospital Appointment</h1>
+  <p class="subtitle">View doctors, check services, and book an appointment</p>
+
+  <div class="tab-nav" id="hospTabNav">
+    <button class="tab-btn active" data-hosp-tab="doctors">Doctors</button>
+    <button class="tab-btn" data-hosp-tab="services">Services</button>
+    <button class="tab-btn" data-hosp-tab="book">Book Appointment</button>
+  </div>
+
+  <div class="tab-panel active" id="hospPanelDoctors">
+    <div class="hosp-grid" id="hospDoctorsGrid"></div>
+  </div>
+
+  <div class="tab-panel" id="hospPanelServices">
+    <div class="hosp-grid" id="hospServicesGrid"></div>
+  </div>
+
+  <div class="tab-panel" id="hospPanelBook">
+    <div class="hosp-form-card">
+      <form id="hospForm">
+        <div class="hosp-form-grid">
+          <div class="hosp-form-row">
+            <label for="hospPatientName">Patient Name</label>
+            <input type="text" id="hospPatientName" required>
+          </div>
+          <div class="hosp-form-row">
+            <label for="hospPatientPhone">Phone Number</label>
+            <input type="tel" id="hospPatientPhone" required>
+          </div>
+        </div>
+        <div class="hosp-form-grid">
+          <div class="hosp-form-row">
+            <label for="hospDoctorSelect">Select Doctor</label>
+            <select id="hospDoctorSelect" required></select>
+          </div>
+          <div class="hosp-form-row">
+            <label for="hospDate">Date</label>
+            <input type="date" id="hospDate" required>
+          </div>
+        </div>
+        <div class="hosp-form-row">
+          <label for="hospTimeSelect">Time Slot</label>
+          <select id="hospTimeSelect" required>
+            <option value="09:00 AM">09:00 AM</option>
+            <option value="10:00 AM">10:00 AM</option>
+            <option value="11:00 AM">11:00 AM</option>
+            <option value="12:00 PM">12:00 PM</option>
+            <option value="02:00 PM">02:00 PM</option>
+            <option value="03:00 PM">03:00 PM</option>
+            <option value="04:00 PM">04:00 PM</option>
+            <option value="05:00 PM">05:00 PM</option>
+          </select>
+        </div>
+        <div class="hosp-form-row">
+          <label for="hospReason">Reason for Visit</label>
+          <textarea id="hospReason" placeholder="Briefly describe your symptoms or reason for visit"></textarea>
+        </div>
+        <button type="submit" class="hosp-submit-btn">Book Appointment</button>
+      </form>
+
+      <div class="hosp-appointments">
+        <h3>My Appointments</h3>
+        <div id="hospAppointmentsList"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  var hospDoctors = [
+    { id: "verma", name: "Dr. Aisha Verma", specialty: "Cardiologist", exp: "12 years experience", icon: "\ud83e\udec0" },
+    { id: "mehta", name: "Dr. Rohan Mehta", specialty: "Pediatrician", exp: "8 years experience", icon: "\ud83e\uddd2" },
+    { id: "nair", name: "Dr. Kavita Nair", specialty: "Dermatologist", exp: "10 years experience", icon: "\ud83e\ude7a" },
+    { id: "khan", name: "Dr. Sameer Khan", specialty: "Orthopedic", exp: "15 years experience", icon: "\ud83e\uddb4" },
+    { id: "desai", name: "Dr. Priya Desai", specialty: "Neurologist", exp: "9 years experience", icon: "\ud83e\udde0" },
+    { id: "rao", name: "Dr. Arjun Rao", specialty: "Dentist", exp: "7 years experience", icon: "\ud83e\uddb7" }
+  ];
+
+  var hospServices = [
+    { name: "Cardiology", desc: "Heart health checkups, ECGs, and ongoing cardiac care.", icon: "\u2764\ufe0f" },
+    { name: "Pediatrics", desc: "Child healthcare, growth tracking, and vaccinations.", icon: "\ud83d\udc76" },
+    { name: "Dermatology", desc: "Skin, hair, and nail diagnosis and treatment.", icon: "\ud83e\uddf4" },
+    { name: "Orthopedics", desc: "Bone, joint, and muscle injury care.", icon: "\ud83e\uddb4" },
+    { name: "Neurology", desc: "Brain and nervous system evaluation and care.", icon: "\ud83e\udde0" },
+    { name: "Dental Care", desc: "Cleanings, fillings, and general dental treatment.", icon: "\ud83e\uddb7" },
+    { name: "Diagnostics", desc: "Lab tests, X-rays, and imaging services.", icon: "\ud83d\udd2c" },
+    { name: "Emergency Care", desc: "24/7 emergency and urgent care services.", icon: "\ud83d\ude91" }
+  ];
+
+  var hospAppointments = [];
+
+  document.querySelectorAll("#hospTabNav .tab-btn").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      document.querySelectorAll("#hospTabNav .tab-btn").forEach(function(b){ b.classList.remove("active"); });
+      document.querySelectorAll(".hosp-section .tab-panel").forEach(function(p){ p.classList.remove("active"); });
+      btn.classList.add("active");
+      var tab = btn.getAttribute("data-hosp-tab");
+      document.getElementById("hospPanel" + tab.charAt(0).toUpperCase() + tab.slice(1)).classList.add("active");
+    });
+  });
+
+  function hospRenderDoctors(){
+    var grid = document.getElementById("hospDoctorsGrid");
+    grid.innerHTML = "";
+    hospDoctors.forEach(function(doc){
+      var card = document.createElement("div");
+      card.className = "hosp-card";
+
+      var icon = document.createElement("div");
+      icon.className = "hosp-card-icon";
+      icon.textContent = doc.icon;
+
+      var name = document.createElement("div");
+      name.className = "hosp-doctor-name";
+      name.textContent = doc.name;
+
+      var specialty = document.createElement("div");
+      specialty.className = "hosp-doctor-specialty";
+      specialty.textContent = doc.specialty;
+
+      var exp = document.createElement("div");
+      exp.className = "hosp-doctor-exp";
+      exp.textContent = doc.exp;
+
+      var btn = document.createElement("button");
+      btn.className = "hosp-book-btn";
+      btn.textContent = "Book Appointment";
+      btn.addEventListener("click", function(){
+        document.getElementById("hospDoctorSelect").value = doc.id;
+        document.querySelector('#hospTabNav .tab-btn[data-hosp-tab="book"]').click();
+      });
+
+      card.appendChild(icon);
+      card.appendChild(name);
+      card.appendChild(specialty);
+      card.appendChild(exp);
+      card.appendChild(btn);
+      grid.appendChild(card);
+    });
+  }
+
+  function hospRenderServices(){
+    var grid = document.getElementById("hospServicesGrid");
+    grid.innerHTML = "";
+    hospServices.forEach(function(svc){
+      var card = document.createElement("div");
+      card.className = "hosp-card";
+
+      var icon = document.createElement("div");
+      icon.className = "hosp-card-icon";
+      icon.textContent = svc.icon;
+
+      var name = document.createElement("div");
+      name.className = "hosp-service-name";
+      name.textContent = svc.name;
+
+      var desc = document.createElement("div");
+      desc.className = "hosp-service-desc";
+      desc.textContent = svc.desc;
+
+      card.appendChild(icon);
+      card.appendChild(name);
+      card.appendChild(desc);
+      grid.appendChild(card);
+    });
+  }
+
+  function hospPopulateDoctorSelect(){
+    var select = document.getElementById("hospDoctorSelect");
+    select.innerHTML = "";
+    hospDoctors.forEach(function(doc){
+      var opt = document.createElement("option");
+      opt.value = doc.id;
+      opt.textContent = doc.name + " (" + doc.specialty + ")";
+      select.appendChild(opt);
+    });
+  }
+
+  function hospFindDoctor(id){
+    for (var i = 0; i < hospDoctors.length; i++) {
+      if (hospDoctors[i].id === id) { return hospDoctors[i]; }
+    }
+    return null;
+  }
+
+  function hospLoadAppointments(){
+    try{
+      var stored = localStorage.getItem("hospitalAppointments");
+      if (stored) { hospAppointments = JSON.parse(stored); }
+    } catch(e){
+      hospAppointments = [];
+    }
+  }
+
+  function hospSaveAppointments(){
+    try{
+      localStorage.setItem("hospitalAppointments", JSON.stringify(hospAppointments));
+    } catch(e){}
+  }
+
+  function hospRenderAppointments(){
+    var list = document.getElementById("hospAppointmentsList");
+    list.innerHTML = "";
+
+    if (hospAppointments.length === 0) {
+      var empty = document.createElement("div");
+      empty.className = "hosp-appt-empty";
+      empty.textContent = "No appointments booked yet.";
+      list.appendChild(empty);
+      return;
+    }
+
+    hospAppointments.forEach(function(appt, index){
+      var item = document.createElement("div");
+      item.className = "hosp-appt-item";
+
+      var info = document.createElement("div");
+      info.className = "hosp-appt-info";
+      var strong = document.createElement("strong");
+      strong.textContent = appt.patientName + " with " + appt.doctorName;
+      info.appendChild(strong);
+      info.appendChild(document.createTextNode(appt.date + " at " + appt.time));
+
+      var cancelBtn = document.createElement("button");
+      cancelBtn.className = "hosp-appt-cancel";
+      cancelBtn.textContent = "Cancel";
+      cancelBtn.addEventListener("click", function(){
+        hospAppointments.splice(index, 1);
+        hospSaveAppointments();
+        hospRenderAppointments();
+      });
+
+      item.appendChild(info);
+      item.appendChild(cancelBtn);
+      list.appendChild(item);
+    });
+  }
+
+  document.getElementById("hospDate").min = new Date().toISOString().split("T")[0];
+
+  document.getElementById("hospForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    var doctorId = document.getElementById("hospDoctorSelect").value;
+    var doctor = hospFindDoctor(doctorId);
+
+    var appt = {
+      patientName: document.getElementById("hospPatientName").value.trim(),
+      patientPhone: document.getElementById("hospPatientPhone").value.trim(),
+      doctorName: doctor ? doctor.name : "",
+      date: document.getElementById("hospDate").value,
+      time: document.getElementById("hospTimeSelect").value,
+      reason: document.getElementById("hospReason").value.trim()
+    };
+
+    if (!appt.patientName || !appt.patientPhone || !appt.date) { return; }
+
+    hospAppointments.push(appt);
+    hospSaveAppointments();
+    hospRenderAppointments();
+
+    document.getElementById("hospForm").reset();
+    document.getElementById("hospDate").min = new Date().toISOString().split("T")[0];
+  });
+
+  hospRenderDoctors();
+  hospRenderServices();
+  hospPopulateDoctorSelect();
+  hospLoadAppointments();
+  hospRenderAppointments();
+</script>
+
+<section class="college-section" id="college-management">
+  <h1>College Management</h1>
+  <p class="subtitle">Departments, courses, faculty, students, and campus events</p>
+
+  <div class="tab-nav" id="collegeTabNav">
+    <button class="tab-btn active" data-college-tab="departments">Departments</button>
+    <button class="tab-btn" data-college-tab="courses">Courses</button>
+    <button class="tab-btn" data-college-tab="faculty">Faculty</button>
+    <button class="tab-btn" data-college-tab="students">Students</button>
+    <button class="tab-btn" data-college-tab="events">Events</button>
+  </div>
+
+  <div class="tab-panel active" id="collegePanelDepartments">
+    <div class="college-grid" id="collegeDeptGrid"></div>
+  </div>
+
+  <div class="tab-panel" id="collegePanelCourses">
+    <div class="college-table-wrap">
+      <table class="college-table">
+        <thead>
+          <tr><th>Course</th><th>Department</th><th>Duration</th><th>Seats</th></tr>
+        </thead>
+        <tbody id="collegeCoursesBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="collegePanelFaculty">
+    <div class="college-grid" id="collegeFacultyGrid"></div>
+  </div>
+
+  <div class="tab-panel" id="collegePanelStudents">
+    <div class="college-stats-row" id="collegeStatsRow"></div>
+    <input type="text" class="college-student-search" id="collegeStudentSearch" placeholder="Search students by name or department...">
+    <div class="college-table-wrap">
+      <table class="college-table">
+        <thead>
+          <tr><th>Name</th><th>Roll No.</th><th>Department</th><th>Year</th></tr>
+        </thead>
+        <tbody id="collegeStudentsBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="collegePanelEvents">
+    <div id="collegeEventsList"></div>
+  </div>
+</section>
+
+<script>
+  var collegeDepartments = [
+    { name: "Computer Science", hod: "Prof. R. Sharma", desc: "Software engineering, AI, and systems programming.", icon: "\ud83d\udcbb" },
+    { name: "Electronics & Communication", hod: "Prof. A. Gupta", desc: "Circuit design, signal processing, and communication systems.", icon: "\ud83d\udce1" },
+    { name: "Mechanical Engineering", hod: "Prof. S. Iyer", desc: "Thermodynamics, manufacturing, and machine design.", icon: "\u2699\ufe0f" },
+    { name: "Civil Engineering", hod: "Prof. M. Joshi", desc: "Structural design, construction, and urban planning.", icon: "\ud83c\udfd7\ufe0f" },
+    { name: "Business Administration", hod: "Prof. N. Kapoor", desc: "Management, finance, and entrepreneurship.", icon: "\ud83d\udcca" }
+  ];
+
+  var collegeCourses = [
+    { name: "B.Tech Computer Science", dept: "Computer Science", duration: "4 Years", seats: 120 },
+    { name: "B.Tech Electronics & Communication", dept: "Electronics & Communication", duration: "4 Years", seats: 90 },
+    { name: "B.Tech Mechanical Engineering", dept: "Mechanical Engineering", duration: "4 Years", seats: 90 },
+    { name: "B.Tech Civil Engineering", dept: "Civil Engineering", duration: "4 Years", seats: 60 },
+    { name: "Master of Business Administration", dept: "Business Administration", duration: "2 Years", seats: 60 },
+    { name: "Bachelor of Computer Applications", dept: "Computer Science", duration: "3 Years", seats: 80 }
+  ];
+
+  var collegeFaculty = [
+    { name: "Dr. R. Sharma", dept: "Computer Science", role: "HOD & Professor", initials: "RS" },
+    { name: "Dr. A. Gupta", dept: "Electronics & Communication", role: "HOD & Professor", initials: "AG" },
+    { name: "Prof. S. Iyer", dept: "Mechanical Engineering", role: "HOD", initials: "SI" },
+    { name: "Dr. N. Kapoor", dept: "Business Administration", role: "HOD", initials: "NK" },
+    { name: "Prof. K. Singh", dept: "Computer Science", role: "Associate Professor", initials: "KS" },
+    { name: "Dr. P. Verma", dept: "Electronics & Communication", role: "Assistant Professor", initials: "PV" }
+  ];
+
+  var collegeStudents = [
+    { name: "Ananya Iyer", roll: "CSE2301", dept: "Computer Science", year: "2nd Year" },
+    { name: "Rahul Verma", roll: "ECE2302", dept: "Electronics & Communication", year: "3rd Year" },
+    { name: "Sneha Patil", roll: "MEC2303", dept: "Mechanical Engineering", year: "1st Year" },
+    { name: "Karan Mehta", roll: "CIV2304", dept: "Civil Engineering", year: "4th Year" },
+    { name: "Divya Nair", roll: "MBA2305", dept: "Business Administration", year: "1st Year" },
+    { name: "Arjun Reddy", roll: "CSE2306", dept: "Computer Science", year: "3rd Year" },
+    { name: "Priya Singh", roll: "ECE2307", dept: "Electronics & Communication", year: "2nd Year" },
+    { name: "Vikram Rao", roll: "MEC2308", dept: "Mechanical Engineering", year: "4th Year" }
+  ];
+
+  var collegeEvents = [
+    { name: "Tech Fest \u2018Innovate 2026\u2019", date: "2026-10-15", desc: "Annual technical festival featuring hackathons, robotics, and coding workshops." },
+    { name: "Inter-Department Sports Meet", date: "2026-11-05", desc: "Annual sports competition between all departments across athletics and team sports." },
+    { name: "Cultural Night", date: "2026-12-02", desc: "An evening of music, dance, and drama performances by students." },
+    { name: "Campus Placement Drive", date: "2027-01-20", desc: "On-campus recruitment drive with leading companies across industries." },
+    { name: "Alumni Meet", date: "2027-02-14", desc: "Annual gathering welcoming alumni back to campus to reconnect and mentor students." }
+  ];
+
+  document.querySelectorAll("#collegeTabNav .tab-btn").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      document.querySelectorAll("#collegeTabNav .tab-btn").forEach(function(b){ b.classList.remove("active"); });
+      document.querySelectorAll(".college-section .tab-panel").forEach(function(p){ p.classList.remove("active"); });
+      btn.classList.add("active");
+      var tab = btn.getAttribute("data-college-tab");
+      document.getElementById("collegePanel" + tab.charAt(0).toUpperCase() + tab.slice(1)).classList.add("active");
+    });
+  });
+
+  function collegeRenderDepartments(){
+    var grid = document.getElementById("collegeDeptGrid");
+    grid.innerHTML = "";
+    collegeDepartments.forEach(function(dept){
+      var card = document.createElement("div");
+      card.className = "college-card";
+
+      var icon = document.createElement("div");
+      icon.className = "college-card-icon";
+      icon.textContent = dept.icon;
+
+      var name = document.createElement("div");
+      name.className = "college-card-name";
+      name.textContent = dept.name;
+
+      var hod = document.createElement("div");
+      hod.className = "college-card-meta";
+      hod.textContent = dept.hod;
+
+      var desc = document.createElement("div");
+      desc.className = "college-card-desc";
+      desc.textContent = dept.desc;
+
+      card.appendChild(icon);
+      card.appendChild(name);
+      card.appendChild(hod);
+      card.appendChild(desc);
+      grid.appendChild(card);
+    });
+  }
+
+  function collegeRenderCourses(){
+    var body = document.getElementById("collegeCoursesBody");
+    body.innerHTML = "";
+    collegeCourses.forEach(function(c){
+      var row = document.createElement("tr");
+      row.innerHTML = "<td>" + c.name + "</td><td>" + c.dept + "</td><td>" + c.duration + "</td><td>" + c.seats + "</td>";
+      body.appendChild(row);
+    });
+  }
+
+  function collegeRenderFaculty(){
+    var grid = document.getElementById("collegeFacultyGrid");
+    grid.innerHTML = "";
+    collegeFaculty.forEach(function(f){
+      var card = document.createElement("div");
+      card.className = "college-card";
+
+      var avatar = document.createElement("div");
+      avatar.className = "college-faculty-avatar";
+      avatar.textContent = f.initials;
+
+      var name = document.createElement("div");
+      name.className = "college-card-name";
+      name.textContent = f.name;
+
+      var role = document.createElement("div");
+      role.className = "college-card-meta";
+      role.textContent = f.role;
+
+      var dept = document.createElement("div");
+      dept.className = "college-card-desc";
+      dept.textContent = f.dept;
+
+      card.appendChild(avatar);
+      card.appendChild(name);
+      card.appendChild(role);
+      card.appendChild(dept);
+      grid.appendChild(card);
+    });
+  }
+
+  function collegeRenderStats(){
+    var row = document.getElementById("collegeStatsRow");
+    row.innerHTML = "";
+    var stats = [
+      { value: collegeStudents.length, label: "Total Students" },
+      { value: collegeDepartments.length, label: "Departments" },
+      { value: collegeCourses.length, label: "Courses Offered" },
+      { value: collegeFaculty.length, label: "Faculty Members" }
+    ];
+    stats.forEach(function(s){
+      var box = document.createElement("div");
+      box.className = "college-stat-box";
+      var val = document.createElement("div");
+      val.className = "college-stat-value";
+      val.textContent = s.value;
+      var label = document.createElement("div");
+      label.className = "college-stat-label";
+      label.textContent = s.label;
+      box.appendChild(val);
+      box.appendChild(label);
+      row.appendChild(box);
+    });
+  }
+
+  function collegeRenderStudents(searchTerm){
+    var body = document.getElementById("collegeStudentsBody");
+    body.innerHTML = "";
+    var term = (searchTerm || "").toLowerCase();
+
+    var filtered = collegeStudents.filter(function(s){
+      return s.name.toLowerCase().indexOf(term) !== -1 || s.dept.toLowerCase().indexOf(term) !== -1;
+    });
+
+    if (filtered.length === 0) {
+      var row = document.createElement("tr");
+      row.innerHTML = "<td colspan=\"4\" style=\"text-align:center;color:#9a9a9a;\">No students match your search.</td>";
+      body.appendChild(row);
+      return;
+    }
+
+    filtered.forEach(function(s){
+      var row = document.createElement("tr");
+      row.innerHTML = "<td>" + s.name + "</td><td>" + s.roll + "</td><td>" + s.dept + "</td><td>" + s.year + "</td>";
+      body.appendChild(row);
+    });
+  }
+
+  document.getElementById("collegeStudentSearch").addEventListener("input", function(){
+    collegeRenderStudents(this.value.trim());
+  });
+
+  function collegeRenderEvents(){
+    var list = document.getElementById("collegeEventsList");
+    list.innerHTML = "";
+    var monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+    collegeEvents.forEach(function(ev){
+      var dateObj = new Date(ev.date + "T00:00:00");
+      var card = document.createElement("div");
+      card.className = "college-event-card";
+
+      var dateBox = document.createElement("div");
+      dateBox.className = "college-event-date";
+      var day = document.createElement("div");
+      day.className = "day";
+      day.textContent = dateObj.getDate();
+      var month = document.createElement("div");
+      month.className = "month";
+      month.textContent = monthNames[dateObj.getMonth()];
+      dateBox.appendChild(day);
+      dateBox.appendChild(month);
+
+      var infoDiv = document.createElement("div");
+      var name = document.createElement("div");
+      name.className = "college-event-name";
+      name.textContent = ev.name;
+      var desc = document.createElement("div");
+      desc.className = "college-event-desc";
+      desc.textContent = ev.desc;
+      infoDiv.appendChild(name);
+      infoDiv.appendChild(desc);
+
+      card.appendChild(dateBox);
+      card.appendChild(infoDiv);
+      list.appendChild(card);
+    });
+  }
+
+  collegeRenderDepartments();
+  collegeRenderCourses();
+  collegeRenderFaculty();
+  collegeRenderStats();
+  collegeRenderStudents("");
+  collegeRenderEvents();
 </script>
 
 <script>
