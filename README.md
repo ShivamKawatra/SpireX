@@ -13,3 +13,5 @@
 #Weather Information
 #Shopping Cart
 #E Commerce Store
+#Hospital Appointment 
+#College Management 
