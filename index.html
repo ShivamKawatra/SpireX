@@ -2301,6 +2301,363 @@
       flex-wrap:wrap;
     }
   }
+
+  .restaurant-section{
+    --r-bg: #1c1613;
+    --r-bg2: #2a201b;
+    --r-cream: #fdf8f2;
+    --r-gold: #c9974c;
+    --r-gold-dark: #a97c38;
+    --r-text: #2c2420;
+    --r-muted: #7a6f66;
+    --r-line: #e8ddd0;
+    background:var(--r-bg);
+    padding:0 0 80px;
+  }
+  .rest-hero{
+    background:linear-gradient(160deg, var(--r-bg) 0%, var(--r-bg2) 100%);
+    padding:60px 24px 40px;
+    text-align:center;
+  }
+  .rest-hero .rest-eyebrow{
+    color:var(--r-gold);
+    font-size:0.8rem;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    margin-bottom:10px;
+    font-family:Arial, Helvetica, sans-serif;
+  }
+  .rest-hero h1{
+    font-family:Georgia, "Cambria", serif;
+    color:var(--r-cream);
+    font-size:2.4rem;
+    margin-bottom:10px;
+  }
+  .rest-hero p.subtitle{
+    color:#cdbfae;
+    font-size:1rem;
+    margin-bottom:30px;
+  }
+  .rest-tab-nav{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+  .rest-tab-btn{
+    padding:10px 20px;
+    border:1px solid #4a3d34;
+    background:transparent;
+    color:#e8ddd0;
+    border-radius:20px;
+    font-size:0.85rem;
+    font-weight:bold;
+    cursor:pointer;
+    font-family:Arial, Helvetica, sans-serif;
+    transition:background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  .rest-tab-btn:hover{
+    border-color:var(--r-gold);
+  }
+  .rest-tab-btn.active{
+    background:var(--r-gold);
+    border-color:var(--r-gold);
+    color:#1c1613;
+  }
+  .rest-body{
+    background:var(--r-cream);
+    padding:50px 24px;
+  }
+  .rest-panel{
+    display:none;
+    max-width:960px;
+    margin:0 auto;
+  }
+  .rest-panel.active{
+    display:block;
+  }
+
+  .rest-menu-category{
+    margin-bottom:36px;
+  }
+  .rest-menu-category:last-child{
+    margin-bottom:0;
+  }
+  .rest-menu-category h3{
+    font-family:Georgia, "Cambria", serif;
+    color:var(--r-gold-dark);
+    font-size:1.2rem;
+    margin-bottom:16px;
+    padding-bottom:8px;
+    border-bottom:2px solid var(--r-gold);
+    display:inline-block;
+  }
+  .rest-menu-item{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:baseline;
+    gap:10px;
+    margin-bottom:16px;
+  }
+  .rest-menu-item-name{
+    font-family:Georgia, "Cambria", serif;
+    font-weight:bold;
+    color:var(--r-text);
+    font-size:1rem;
+    white-space:nowrap;
+  }
+  .rest-menu-item-dots{
+    flex:1;
+    border-bottom:1px dotted #c9b8a4;
+    position:relative;
+    top:-4px;
+  }
+  .rest-menu-item-price{
+    font-weight:bold;
+    color:var(--r-gold-dark);
+    font-size:0.98rem;
+    white-space:nowrap;
+  }
+  .rest-menu-item-desc{
+    flex-basis:100%;
+    font-size:0.82rem;
+    color:var(--r-muted);
+    margin-top:-10px;
+  }
+
+  .rest-services-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:16px;
+  }
+  .rest-service-card{
+    background:#fff;
+    border:1px solid var(--r-line);
+    border-radius:10px;
+    padding:26px 18px;
+    text-align:center;
+  }
+  .rest-service-icon{
+    font-size:2.2rem;
+    margin-bottom:12px;
+  }
+  .rest-service-name{
+    font-family:Georgia, "Cambria", serif;
+    font-weight:bold;
+    color:var(--r-text);
+    margin-bottom:6px;
+  }
+  .rest-service-desc{
+    font-size:0.82rem;
+    color:var(--r-muted);
+    line-height:1.4;
+  }
+
+  .rest-gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:14px;
+  }
+  .rest-gallery-tile{
+    aspect-ratio:1;
+    border-radius:10px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    text-align:center;
+    padding:14px;
+    cursor:default;
+    transition:transform 0.2s ease;
+  }
+  .rest-gallery-tile:hover{
+    transform:scale(1.03);
+  }
+  .rest-gallery-icon{
+    font-size:2.6rem;
+    margin-bottom:8px;
+  }
+  .rest-gallery-label{
+    font-family:Georgia, "Cambria", serif;
+    font-size:0.9rem;
+    font-weight:bold;
+  }
+
+  .rest-contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+  }
+  .rest-contact-info div{
+    margin-bottom:20px;
+  }
+  .rest-contact-label{
+    font-size:0.75rem;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    color:var(--r-gold-dark);
+    font-weight:bold;
+    margin-bottom:4px;
+  }
+  .rest-contact-value{
+    color:var(--r-text);
+    font-size:0.95rem;
+    line-height:1.5;
+  }
+  .rest-hours-table{
+    width:100%;
+    border-collapse:collapse;
+  }
+  .rest-hours-table td{
+    padding:8px 0;
+    font-size:0.88rem;
+    color:var(--r-text);
+    border-bottom:1px solid var(--r-line);
+  }
+  .rest-hours-table td:last-child{
+    text-align:right;
+    color:var(--r-muted);
+  }
+  .rest-map-box{
+    background:#efe4d6;
+    border:1px dashed #c9b8a4;
+    border-radius:10px;
+    height:100%;
+    min-height:200px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    color:var(--r-muted);
+  }
+  .rest-map-box .pin{
+    font-size:2.4rem;
+    margin-bottom:8px;
+  }
+
+  .rest-booking-card{
+    background:#fff;
+    border:1px solid var(--r-line);
+    border-radius:10px;
+    padding:32px;
+  }
+  .rest-form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+  }
+  .rest-form-row{
+    margin-bottom:16px;
+  }
+  .rest-form-row label{
+    display:block;
+    font-size:0.8rem;
+    font-weight:bold;
+    color:var(--r-muted);
+    margin-bottom:6px;
+  }
+  .rest-form-row input,
+  .rest-form-row select,
+  .rest-form-row textarea{
+    width:100%;
+    padding:11px 14px;
+    border:1px solid var(--r-line);
+    border-radius:6px;
+    font-size:0.92rem;
+    font-family:inherit;
+    color:var(--r-text);
+  }
+  .rest-form-row textarea{
+    resize:vertical;
+    min-height:60px;
+  }
+  .rest-submit-btn{
+    width:100%;
+    padding:13px 0;
+    background:var(--r-gold-dark);
+    color:#fff;
+    border:none;
+    border-radius:6px;
+    font-weight:bold;
+    font-size:0.95rem;
+    cursor:pointer;
+    margin-top:4px;
+  }
+  .rest-submit-btn:hover{
+    opacity:0.9;
+  }
+  .rest-bookings{
+    margin-top:30px;
+  }
+  .rest-bookings h3{
+    font-family:Georgia, "Cambria", serif;
+    color:var(--r-text);
+    font-size:1rem;
+    margin-bottom:14px;
+  }
+  .rest-booking-item{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    background:var(--r-cream);
+    border:1px solid var(--r-line);
+    border-radius:8px;
+    padding:14px 16px;
+    margin-bottom:10px;
+  }
+  .rest-booking-info strong{
+    display:block;
+    font-size:0.92rem;
+    color:var(--r-text);
+  }
+  .rest-booking-info span{
+    font-size:0.8rem;
+    color:var(--r-muted);
+  }
+  .rest-booking-cancel{
+    background:none;
+    border:none;
+    color:#b03a2e;
+    font-size:0.88rem;
+    cursor:pointer;
+  }
+  .rest-booking-empty{
+    text-align:center;
+    color:var(--r-muted);
+    font-size:0.88rem;
+    padding:16px 0;
+  }
+
+  @media (max-width:768px){
+    .rest-services-grid{
+      grid-template-columns:repeat(2, 1fr);
+    }
+    .rest-gallery-grid{
+      grid-template-columns:repeat(2, 1fr);
+    }
+    .rest-contact-grid{
+      grid-template-columns:1fr;
+    }
+    .rest-form-grid{
+      grid-template-columns:1fr;
+    }
+  }
+  @media (max-width:520px){
+    .rest-services-grid, .rest-gallery-grid{
+      grid-template-columns:1fr;
+    }
+    .rest-menu-item{
+      flex-wrap:wrap;
+    }
+    .rest-menu-item-dots{
+      display:none;
+    }
+    .rest-booking-item{
+      flex-wrap:wrap;
+    }
+  }
 </style>
 </head>
 <body>
@@ -2386,6 +2743,11 @@
     <li class="quicknav-item" draggable="true" data-target="internship-portal">
       <span class="drag-handle">&#9776;</span>
       <span class="quicknav-label">Student Internship Portal</span>
+      <span class="quicknav-arrow">&#8594;</span>
+    </li>
+    <li class="quicknav-item" draggable="true" data-target="restaurant">
+      <span class="drag-handle">&#9776;</span>
+      <span class="quicknav-label">Restaurant</span>
       <span class="quicknav-arrow">&#8594;</span>
     </li>
   </ul>
@@ -4456,6 +4818,347 @@
   internRenderGrid();
   internLoadApplications();
   internRenderApplications();
+</script>
+
+<section class="restaurant-section" id="restaurant">
+  <div class="rest-hero">
+    <div class="rest-eyebrow">Fine Dining &amp; Casual Comfort</div>
+    <h1>The Golden Fork</h1>
+    <p class="subtitle">Explore our menu, services, gallery, and reserve your table</p>
+    <div class="rest-tab-nav" id="restTabNav">
+      <button class="rest-tab-btn active" data-rest-tab="menu">Menu</button>
+      <button class="rest-tab-btn" data-rest-tab="services">Services</button>
+      <button class="rest-tab-btn" data-rest-tab="gallery">Gallery</button>
+      <button class="rest-tab-btn" data-rest-tab="contact">Contact</button>
+      <button class="rest-tab-btn" data-rest-tab="book">Book a Table</button>
+    </div>
+  </div>
+
+  <div class="rest-body">
+    <div class="rest-panel active" id="restPanelMenu">
+      <div id="restMenuContent"></div>
+    </div>
+
+    <div class="rest-panel" id="restPanelServices">
+      <div class="rest-services-grid" id="restServicesGrid"></div>
+    </div>
+
+    <div class="rest-panel" id="restPanelGallery">
+      <div class="rest-gallery-grid" id="restGalleryGrid"></div>
+    </div>
+
+    <div class="rest-panel" id="restPanelContact">
+      <div class="rest-contact-grid">
+        <div class="rest-contact-info">
+          <div>
+            <div class="rest-contact-label">Address</div>
+            <div class="rest-contact-value">42 Lakeview Road, Sector 18<br>Gautam Buddha Nagar, Uttar Pradesh</div>
+          </div>
+          <div>
+            <div class="rest-contact-label">Phone</div>
+            <div class="rest-contact-value">+91 98765 43210</div>
+          </div>
+          <div>
+            <div class="rest-contact-label">Email</div>
+            <div class="rest-contact-value">reservations@goldenfork.example</div>
+          </div>
+          <div>
+            <div class="rest-contact-label">Opening Hours</div>
+            <table class="rest-hours-table">
+              <tr><td>Monday &ndash; Friday</td><td>12:00 PM &ndash; 11:00 PM</td></tr>
+              <tr><td>Saturday &ndash; Sunday</td><td>11:00 AM &ndash; 12:00 AM</td></tr>
+            </table>
+          </div>
+        </div>
+        <div class="rest-map-box">
+          <div class="pin">&#128205;</div>
+          <div>Map preview unavailable</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rest-panel" id="restPanelBook">
+      <div class="rest-booking-card">
+        <form id="restBookingForm">
+          <div class="rest-form-grid">
+            <div class="rest-form-row">
+              <label for="restName">Full Name</label>
+              <input type="text" id="restName" required>
+            </div>
+            <div class="rest-form-row">
+              <label for="restPhone">Phone Number</label>
+              <input type="tel" id="restPhone" required>
+            </div>
+          </div>
+          <div class="rest-form-grid">
+            <div class="rest-form-row">
+              <label for="restDate">Date</label>
+              <input type="date" id="restDate" required>
+            </div>
+            <div class="rest-form-row">
+              <label for="restTime">Time</label>
+              <select id="restTime">
+                <option value="12:00 PM">12:00 PM</option>
+                <option value="01:00 PM">01:00 PM</option>
+                <option value="02:00 PM">02:00 PM</option>
+                <option value="07:00 PM">07:00 PM</option>
+                <option value="08:00 PM">08:00 PM</option>
+                <option value="09:00 PM">09:00 PM</option>
+              </select>
+            </div>
+          </div>
+          <div class="rest-form-grid">
+            <div class="rest-form-row">
+              <label for="restGuests">Number of Guests</label>
+              <input type="number" id="restGuests" min="1" max="20" value="2">
+            </div>
+            <div class="rest-form-row">
+              <label for="restOccasion">Occasion (optional)</label>
+              <input type="text" id="restOccasion" placeholder="Birthday, anniversary, etc.">
+            </div>
+          </div>
+          <div class="rest-form-row">
+            <label for="restRequest">Special Request</label>
+            <textarea id="restRequest" placeholder="Window seating, dietary needs, etc."></textarea>
+          </div>
+          <button type="submit" class="rest-submit-btn">Reserve Table</button>
+        </form>
+
+        <div class="rest-bookings">
+          <h3>My Reservations</h3>
+          <div id="restBookingsList"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  var restMenu = [
+    { category: "Starters", items: [
+      { name: "Bruschetta Trio", desc: "Toasted sourdough with tomato-basil, mushroom, and olive tapenade.", price: "\u20b9299" },
+      { name: "Crispy Calamari", desc: "Lightly battered squid rings with lemon aioli.", price: "\u20b9349" },
+      { name: "Soup of the Day", desc: "Chef's daily selection, served with garlic bread.", price: "\u20b9199" }
+    ]},
+    { category: "Main Course", items: [
+      { name: "Wood-Fired Margherita", desc: "San Marzano tomatoes, fresh mozzarella, and basil.", price: "\u20b9449" },
+      { name: "Grilled Salmon", desc: "Served with roasted vegetables and lemon butter sauce.", price: "\u20b9699" },
+      { name: "Butter Chicken", desc: "Slow-cooked in a rich tomato and cream gravy, served with naan.", price: "\u20b9499" },
+      { name: "Mushroom Risotto", desc: "Creamy arborio rice with wild mushrooms and parmesan.", price: "\u20b9459" }
+    ]},
+    { category: "Desserts", items: [
+      { name: "Molten Chocolate Cake", desc: "Warm chocolate cake with a gooey center, vanilla ice cream.", price: "\u20b9249" },
+      { name: "Tiramisu", desc: "Classic Italian layered dessert with espresso and mascarpone.", price: "\u20b9269" }
+    ]},
+    { category: "Beverages", items: [
+      { name: "Fresh Fruit Mocktail", desc: "Seasonal fruits blended with soda and mint.", price: "\u20b9179" },
+      { name: "Cold Brew Coffee", desc: "Slow-steeped for 18 hours, served over ice.", price: "\u20b9159" }
+    ]}
+  ];
+
+  var restServices = [
+    { name: "Dine-In", desc: "A warm, elegant setting for everyday meals and special occasions.", icon: "\ud83c\udf7d\ufe0f" },
+    { name: "Home Delivery", desc: "Fresh, hot meals delivered straight to your door.", icon: "\ud83d\udefa" },
+    { name: "Outdoor Catering", desc: "Full-service catering for weddings, parties, and corporate events.", icon: "\ud83c\udf89" },
+    { name: "Private Events", desc: "Book our private dining room for intimate celebrations.", icon: "\ud83e\udd42" }
+  ];
+
+  var restGallery = [
+    { label: "Signature Pasta", icon: "\ud83c\udf5d", color: "#8a5a3b" },
+    { label: "Wood-Fired Pizza", icon: "\ud83c\udf55", color: "#b5482f" },
+    { label: "Chef's Dessert", icon: "\ud83c\udf70", color: "#a9738a" },
+    { label: "Cozy Interior", icon: "\ud83d\udd6f\ufe0f", color: "#6b5a45" },
+    { label: "Rooftop Seating", icon: "\ud83c\udf07", color: "#4a5a6b" },
+    { label: "Weekend Brunch", icon: "\ud83e\udd50", color: "#c9974c" }
+  ];
+
+  var restBookings = [];
+
+  document.querySelectorAll("#restTabNav .rest-tab-btn").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      document.querySelectorAll("#restTabNav .rest-tab-btn").forEach(function(b){ b.classList.remove("active"); });
+      document.querySelectorAll(".restaurant-section .rest-panel").forEach(function(p){ p.classList.remove("active"); });
+      btn.classList.add("active");
+      var tab = btn.getAttribute("data-rest-tab");
+      document.getElementById("restPanel" + tab.charAt(0).toUpperCase() + tab.slice(1)).classList.add("active");
+    });
+  });
+
+  function restRenderMenu(){
+    var container = document.getElementById("restMenuContent");
+    container.innerHTML = "";
+    restMenu.forEach(function(cat){
+      var block = document.createElement("div");
+      block.className = "rest-menu-category";
+
+      var heading = document.createElement("h3");
+      heading.textContent = cat.category;
+      block.appendChild(heading);
+
+      cat.items.forEach(function(item){
+        var row = document.createElement("div");
+        row.className = "rest-menu-item";
+
+        var name = document.createElement("span");
+        name.className = "rest-menu-item-name";
+        name.textContent = item.name;
+
+        var dots = document.createElement("span");
+        dots.className = "rest-menu-item-dots";
+
+        var price = document.createElement("span");
+        price.className = "rest-menu-item-price";
+        price.textContent = item.price;
+
+        var desc = document.createElement("div");
+        desc.className = "rest-menu-item-desc";
+        desc.textContent = item.desc;
+
+        row.appendChild(name);
+        row.appendChild(dots);
+        row.appendChild(price);
+        row.appendChild(desc);
+        block.appendChild(row);
+      });
+
+      container.appendChild(block);
+    });
+  }
+
+  function restRenderServices(){
+    var grid = document.getElementById("restServicesGrid");
+    grid.innerHTML = "";
+    restServices.forEach(function(svc){
+      var card = document.createElement("div");
+      card.className = "rest-service-card";
+
+      var icon = document.createElement("div");
+      icon.className = "rest-service-icon";
+      icon.textContent = svc.icon;
+
+      var name = document.createElement("div");
+      name.className = "rest-service-name";
+      name.textContent = svc.name;
+
+      var desc = document.createElement("div");
+      desc.className = "rest-service-desc";
+      desc.textContent = svc.desc;
+
+      card.appendChild(icon);
+      card.appendChild(name);
+      card.appendChild(desc);
+      grid.appendChild(card);
+    });
+  }
+
+  function restRenderGallery(){
+    var grid = document.getElementById("restGalleryGrid");
+    grid.innerHTML = "";
+    restGallery.forEach(function(g){
+      var tile = document.createElement("div");
+      tile.className = "rest-gallery-tile";
+      tile.style.background = g.color;
+
+      var icon = document.createElement("div");
+      icon.className = "rest-gallery-icon";
+      icon.textContent = g.icon;
+
+      var label = document.createElement("div");
+      label.className = "rest-gallery-label";
+      label.textContent = g.label;
+
+      tile.appendChild(icon);
+      tile.appendChild(label);
+      grid.appendChild(tile);
+    });
+  }
+
+  function restLoadBookings(){
+    try{
+      var stored = localStorage.getItem("restaurantBookings");
+      if (stored) { restBookings = JSON.parse(stored); }
+    } catch(e){
+      restBookings = [];
+    }
+  }
+
+  function restSaveBookings(){
+    try{
+      localStorage.setItem("restaurantBookings", JSON.stringify(restBookings));
+    } catch(e){}
+  }
+
+  function restRenderBookings(){
+    var list = document.getElementById("restBookingsList");
+    list.innerHTML = "";
+
+    if (restBookings.length === 0) {
+      var empty = document.createElement("div");
+      empty.className = "rest-booking-empty";
+      empty.textContent = "No reservations yet.";
+      list.appendChild(empty);
+      return;
+    }
+
+    restBookings.forEach(function(b, index){
+      var item = document.createElement("div");
+      item.className = "rest-booking-item";
+
+      var info = document.createElement("div");
+      info.className = "rest-booking-info";
+      var strong = document.createElement("strong");
+      strong.textContent = b.name + " \u00b7 " + b.guests + " guests";
+      var span = document.createElement("span");
+      span.textContent = b.date + " at " + b.time;
+      info.appendChild(strong);
+      info.appendChild(span);
+
+      var cancelBtn = document.createElement("button");
+      cancelBtn.className = "rest-booking-cancel";
+      cancelBtn.textContent = "Cancel";
+      cancelBtn.addEventListener("click", function(){
+        restBookings.splice(index, 1);
+        restSaveBookings();
+        restRenderBookings();
+      });
+
+      item.appendChild(info);
+      item.appendChild(cancelBtn);
+      list.appendChild(item);
+    });
+  }
+
+  document.getElementById("restDate").min = new Date().toISOString().split("T")[0];
+
+  document.getElementById("restBookingForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    var booking = {
+      name: document.getElementById("restName").value.trim(),
+      phone: document.getElementById("restPhone").value.trim(),
+      date: document.getElementById("restDate").value,
+      time: document.getElementById("restTime").value,
+      guests: document.getElementById("restGuests").value,
+      occasion: document.getElementById("restOccasion").value.trim(),
+      request: document.getElementById("restRequest").value.trim()
+    };
+
+    if (!booking.name || !booking.phone || !booking.date) { return; }
+
+    restBookings.push(booking);
+    restSaveBookings();
+    restRenderBookings();
+
+    document.getElementById("restBookingForm").reset();
+    document.getElementById("restDate").min = new Date().toISOString().split("T")[0];
+    document.getElementById("restGuests").value = 2;
+  });
+
+  restRenderMenu();
+  restRenderServices();
+  restRenderGallery();
+  restLoadBookings();
+  restRenderBookings();
 </script>
 
 <script>
